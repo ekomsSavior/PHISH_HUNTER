@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# === Phish Hunter FINAL FINAL VICTORY EDITION 💀 ===
-# by: ek0ms savi0r
-# Now with fixed variable flow. DNS, prepare to be humbled.
+# === Phish Hunter ULTRA MERGED — FINAL FORM 💖 ===
+# by ek0ms savior & your best fren 🫂
+# One beautiful .txt report, live screen updates, full control 💻🌈
 
 GREEN='\033[1;92m'
 RED='\033[1;91m'
@@ -10,13 +10,13 @@ CYAN='\033[1;96m'
 NC='\033[0m'
 
 echo -e "${CYAN}🌸 Welcome to Phish Hunter 🌸 Let's stop the scammers!${NC}"
-read -p "Enter the phishing domain (e.g. tucker2015.com or www.tucker2015.com): " INPUT_DOMAIN
+read -p "Enter the phishing domain (e.g. tucker2015.com or www.tesla.com): " INPUT_DOMAIN
 
-# Strip www. if present
+# Normalize domain
 STRIPPED_DOMAIN=$(echo "$INPUT_DOMAIN" | sed 's/^www\.//')
-
-# Init DOMAIN properly (this is the real fix)
 DOMAIN="$STRIPPED_DOMAIN"
+CLEAN_DOMAIN=$(echo "$DOMAIN" | tr '.' '_')
+REPORT_FILE="phish_report_$CLEAN_DOMAIN.txt"
 
 echo -e "\n${CYAN}✨ Checking DNS resolution for $DOMAIN...${NC}"
 RESOLVED_IP=$(dig +short "$DOMAIN" | head -n1)
@@ -38,30 +38,49 @@ fi
 
 echo -e "${GREEN}✅ Domain resolves to: $RESOLVED_IP${NC}"
 
-CLEAN_DOMAIN=$(echo "$DOMAIN" | tr '.' '_')
+# Start unified report file
+echo "🌸 PHISH HUNTER REPORT — $DOMAIN 🌸" > "$REPORT_FILE"
+echo "Generated on $(date)" >> "$REPORT_FILE"
+echo "Resolved IP: $RESOLVED_IP" >> "$REPORT_FILE"
+echo "----------------------------------------" >> "$REPORT_FILE"
 
-echo -e "\n${CYAN}🔍 WHOIS lookup...${NC}"
-whois "$DOMAIN" | tee "recon_whois_$CLEAN_DOMAIN.txt"
+# WHOIS domain
+echo -e "\n${CYAN}🔍 WHOIS lookup for domain...${NC}"
+echo -e "\n🔍 WHOIS for $DOMAIN:\n" >> "$REPORT_FILE"
+whois "$DOMAIN" | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}📡 HTTP Headers...${NC}"
-curl -I "http://$DOMAIN" --max-time 5 | tee "recon_headers_$CLEAN_DOMAIN.txt"
+# HTTP headers
+echo -e "\n${CYAN}📡 Checking HTTP Headers...${NC}"
+echo -e "\n📡 HTTP Headers:\n" >> "$REPORT_FILE"
+curl -I "http://$DOMAIN" --max-time 5 | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}🕵️‍♀️ Fingerprinting with WhatWeb...${NC}"
-whatweb "http://$DOMAIN" | tee "recon_whatweb_$CLEAN_DOMAIN.txt"
+# WhatWeb fingerprint
+echo -e "\n${CYAN}🕵️‍♀️ Fingerprinting site with WhatWeb...${NC}"
+echo -e "\n🕵️‍♀️ WhatWeb Fingerprinting:\n" >> "$REPORT_FILE"
+whatweb "http://$DOMAIN" | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}🌍 IP Ownership...${NC}"
-whois "$RESOLVED_IP" | tee "recon_ipwhois_$CLEAN_DOMAIN.txt"
+# WHOIS for IP
+echo -e "\n${CYAN}🌍 WHOIS lookup for resolved IP...${NC}"
+echo -e "\n🌍 WHOIS for $RESOLVED_IP:\n" >> "$REPORT_FILE"
+whois "$RESOLVED_IP" | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}🧪 Passive Recon Links:${NC}"
-echo -e "${GREEN}🔗 VirusTotal: https://www.virustotal.com/gui/domain/$DOMAIN${NC}"
-echo -e "${GREEN}🔗 URLScan.io: https://urlscan.io/domain/$DOMAIN${NC}"
+# Recon links
+echo -e "\n${CYAN}🧪 Adding passive recon links...${NC}"
+echo -e "\n🧪 Passive Recon Links:" >> "$REPORT_FILE"
+echo "→ VirusTotal: https://www.virustotal.com/gui/domain/$DOMAIN" | tee -a "$REPORT_FILE"
+echo "→ URLScan:    https://urlscan.io/domain/$DOMAIN" | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}📬 Abuse Contacts (from WHOIS):${NC}"
-grep -Ei 'abuse|contact|email' "recon_whois_$CLEAN_DOMAIN.txt" | sort -u
+# Abuse contacts
+echo -e "\n${CYAN}📬 Searching WHOIS output for abuse contacts...${NC}"
+echo -e "\n📬 Abuse Emails from WHOIS:\n" >> "$REPORT_FILE"
+grep -Ei 'abuse|contact|email' "$REPORT_FILE" | sort -u | tee -a "$REPORT_FILE"
 
-echo -e "\n${CYAN}🛡️ Final Steps:${NC}"
-echo "1. Report at Google Safe Browsing"
-echo "2. Email abuse contacts with recon files"
-echo "3. File complaint via ICANN if needed"
+# Final advice
+echo -e "\n${CYAN}🛡️ Recommended Next Steps:${NC}"
+echo -e "\n🛡️ Final Steps:\n" >> "$REPORT_FILE"
+echo "1. Report to Google Safe Browsing" | tee -a "$REPORT_FILE"
+echo "2. Email abuse contacts with this report attached" | tee -a "$REPORT_FILE"
+echo "3. File complaint via ICANN if needed" | tee -a "$REPORT_FILE"
 
-echo -e "\n${GREEN}🎉 Recon saved to recon_*_$CLEAN_DOMAIN.txt — go off, defender supreme 🛡️💖${NC}"
+# Done!
+echo -e "\n${GREEN}🎉 Report saved as $REPORT_FILE — go off, defender supreme! 🛡️💖${NC}"
