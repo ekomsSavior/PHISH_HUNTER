@@ -24,13 +24,19 @@ run it
 
 youll be prompted to enter domain, do so and watch the magic xox
 
-hit em with spam 
+✨all the data from this scan will be saved in one file xo 
 
-nano phish_spam.sh      (edit script to show your scammers ip found in the scan you run first)
+-grab the resolved ip from your saved data from our scan. save that ip 🫶
+
+🦾 hit em with spam 
+
+nano phish_spam.sh      (edit script to show your scammers ip )
 
 chmod +x phish_spam.sh
 
 ./phish_spam.sh
+
+ctrl+c to stop spam 
 
 
 DISCLAIMER: only use this for ethical hacking and for systems and networks you have permission to test on 
