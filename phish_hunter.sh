@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# === Phish Hunter ULTRA MERGED — FINAL FORM 💖 ===
-# by ek0ms savior & your best fren 🫂
-# One beautiful .txt report, live screen updates, full control 💻🌈
+# === Phish Hunter ULTRA MERGED — FINAL FORM  ===
+# by ek0ms savior 🫂
+# One beautiful .txt report, live screen updates, full control 
 
 GREEN='\033[1;92m'
 RED='\033[1;91m'
