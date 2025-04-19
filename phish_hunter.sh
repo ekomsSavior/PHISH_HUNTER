@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === Phish Hunter ULTRA MERGED — FINAL FORM  ===
-# by ek0ms savior 🫂
+# by ek0ms savi0r 🫂
 # One beautiful .txt report, live screen updates, full control 
 
 GREEN='\033[1;92m'
