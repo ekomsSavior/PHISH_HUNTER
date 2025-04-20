@@ -1,45 +1,119 @@
-# PHISH_HUNTER
+PHISH_HUNTER
 
-X0X0X0X
+by ek0ms savi0r x0x
+
+Phish Hunter is a two-script combo for ethically tracking and disrupting phishing sites.
+
+One script hunts. One script spams. 
 
 ---------------------------
 
-instructions for install
+REQUIREMENTS
 
-on you machine run
+Run this on Kali or any Debian-based system.
+
+Install tools
 
 sudo apt update
 
-sudo apt install whois whatweb curl -y
+sudo apt install whois whatweb curl tor -y
+
+Start Tor
+
+sudo systemctl enable tor
+
+sudo systemctl start tor
+
+---------------------------
+
+USAGE
+
+1. DOMAIN RECON
 
 nano phish_hunter.sh
 
-Paste script, save (CTRL+X → Y → ENTER) (edit the script to reflect the domain you are hunting)
+# Paste in the script from GitHub
+
+CTRL+X → Y → ENTER
 
 chmod +x phish_hunter.sh
 
-run it
-
 ./phish_hunter.sh
 
-youll be prompted to enter domain, do so and watch the magic xox
+You’ll be prompted to enter a phishing domain like
 
-✨all the data from this scan will be saved in one file xo 
+tracker2051.com
 
--grab the resolved ip from your saved data 
-from our scan. save that ip 🫶
+Phish Hunter will
 
+- Resolve the IP
 
-nano phish_spam.sh      (edit ip )
+- Run WHOIS
 
-chmod +x phish_spam.sh
+- Grab HTTP headers
 
-./phish_spam.sh
+- Fingerprint the server with WhatWeb
 
-ctrl+c to stop spam 
+- Lookup IP ownership
 
+- Provide abuse contacts
 
-DISCLAIMER: only use this for ethical hacking and for systems and networks you have permission to test on 
+- Save everything to: phish_report_<domain>.txt
 
+Use this to investigate who you’re dealing with.
+
+---------------------------
+
+2. SPAM THE LOGIN PAGE
+
+nano phish_spammer_v3.sh
+
+# Paste in the script from GitHub
+
+CTRL+X → Y → ENTER
+
+chmod +x phish_spammer_v3.sh
+
+Then run it
+
+./phish_spammer_v3.sh "https://examplephish.site"          
+
+This will
+
+- Send fake logins to common phishing paths (/verify, /login.php, etc)
+
+- Rotate through them continuously
+
+- Route everything through Tor SOCKS5
+
+- Randomize delays to simulate human behavior
+
+- Refresh Tor circuits every 3 minutes
+
+CTRL+C to stop at any time
+
+---------------------------
+
+WHAT TO DO IF THE SITE REDIRECTS
+
+Phish sites love redirecting you to a new domain.
+
+Run this
+
+curl -L -I http://taker2051.com
+
+Look for the “Location:” header. That’s your new target.
+
+Now run the spammer on that new domain.
+
+---------------------------
+
+DISCLAIMER
+
+Use Phish Hunter only for
+
+Ethical hacking with permission
+
+Educational and on networks you have permission to test on.
 
 
