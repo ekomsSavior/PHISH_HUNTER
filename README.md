@@ -1,6 +1,6 @@
 # PHISH_HUNTER
 
-XoX lets hunt down phishers XoX
+X0X0X0X
 
 ---------------------------
 
