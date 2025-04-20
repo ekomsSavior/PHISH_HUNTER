@@ -2,7 +2,7 @@
 # phish_spam.sh
 # by ekomsSavior
 
-TARGET_URL="http://74.98.47.117/"                  #edit for you scammers ip
+TARGET_URL="http://74.98.47.117/"                  #edit ip
 
 while true; do
   USER="user$(openssl rand -hex 3)"
