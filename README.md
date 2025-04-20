@@ -30,7 +30,7 @@ youll be prompted to enter domain, do so and watch the magic xox
 from our scan. save that ip 🫶
 
 
-nano phish_spam.sh      (edit script to show your scammers ip )
+nano phish_spam.sh      (edit ip )
 
 chmod +x phish_spam.sh
 
