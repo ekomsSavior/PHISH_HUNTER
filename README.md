@@ -32,7 +32,7 @@ USAGE
 
 nano phish_hunter.sh
 
-# Paste in the script from GitHub
+Paste in the script from GitHub
 
 CTRL+X → Y → ENTER
 
@@ -68,7 +68,7 @@ Use this to investigate who you’re dealing with.
 
 nano phish_spammer_v3.sh
 
-# Paste in the script from GitHub
+Paste in the script from GitHub
 
 CTRL+X → Y → ENTER
 
