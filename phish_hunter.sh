@@ -10,7 +10,7 @@ CYAN='\033[1;96m'
 NC='\033[0m'
 
 echo -e "${CYAN}🌸 Welcome to Phish Hunter 🌸 Let's stop the scammers!${NC}"
-read -p "Enter the phishing domain (e.g. tucker2015.com or www.tesla.com): " INPUT_DOMAIN
+read -p "Enter the phishing domain (e.g. fakeweb.com or www.helloworld.com): " INPUT_DOMAIN
 
 # Normalize domain
 STRIPPED_DOMAIN=$(echo "$INPUT_DOMAIN" | sed 's/^www\.//')
