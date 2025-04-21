@@ -76,7 +76,7 @@ chmod +x phish_spammer_v3.sh
 
 Then run it
 
-./phish_spammer_v3.sh "https://examplephish.site"       *proxy_list.txt
+./phish_spammer_v3.sh "https://examplephish.site"  
 
 This will
 
