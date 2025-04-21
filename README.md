@@ -24,8 +24,6 @@ sudo systemctl enable tor
 
 sudo systemctl start tor
 
-Proxy Support (Optional)
-
 ---------------------------
 
 USAGE
@@ -93,6 +91,8 @@ This will
 - Refresh Tor circuits every 3 minutes
 
 CTRL+C to stop at any time
+
+Proxy Support (Optional)
 
 *Phish Spammer v3 can rotate traffic through a list of SOCKS5 proxies to stay anonymous and evade basic blocks.
 
