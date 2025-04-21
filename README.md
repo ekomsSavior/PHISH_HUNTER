@@ -103,7 +103,9 @@ Create a file named proxy_list.txt in your phish_hunter folder.
 Format it like this (one per line)
 
 socks5://127.0.0.1:9050
+
 socks5://tor1.example.net:1080
+
 socks5://192.168.1.50:1080
 
 Then run the spammer like
