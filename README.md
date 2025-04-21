@@ -24,6 +24,8 @@ sudo systemctl enable tor
 
 sudo systemctl start tor
 
+Proxy Support (Optional)
+
 ---------------------------
 
 USAGE
@@ -76,7 +78,7 @@ chmod +x phish_spammer_v3.sh
 
 Then run it
 
-./phish_spammer_v3.sh "https://examplephish.site"          
+./phish_spammer_v3.sh "https://examplephish.site"       *proxy_list.txt
 
 This will
 
@@ -91,6 +93,26 @@ This will
 - Refresh Tor circuits every 3 minutes
 
 CTRL+C to stop at any time
+
+*Phish Spammer v3 can rotate traffic through a list of SOCKS5 proxies to stay anonymous and evade basic blocks.
+
+To use this
+
+Create a file named proxy_list.txt in your phish_hunter folder.
+
+Format it like this (one per line)
+
+socks5://127.0.0.1:9050
+socks5://tor1.example.net:1080
+socks5://192.168.1.50:1080
+
+Then run the spammer like
+
+./phish_spammer_v3.sh https://example.com/login proxy_list.txt
+
+
+f no proxy list is provided, the script defaults to Tor via 127.0.0.1:9050.
+(Tip: Start Tor with sudo service tor start on Kali.)
 
 ---------------------------
 
@@ -117,3 +139,4 @@ Ethical hacking with permission
 Educational and on networks you have permission to test on.
 
 
+x0x
