@@ -113,7 +113,7 @@ Then run the spammer like
 ./phish_spammer_v3.sh https://example.com/login proxy_list.txt
 
 
-f no proxy list is provided, the script defaults to Tor via 127.0.0.1:9050.
+if no proxy list is provided, the script defaults to Tor via 127.0.0.1:9050.
 (Tip: Start Tor with sudo service tor start on Kali.)
 
 ---------------------------
