@@ -47,7 +47,7 @@ refresh_tor() {
     pkill -HUP tor 2>/dev/null
 }
 
-echo -e "🌸 Starting Phish Spammer v3 — ethical & fabulous 💅"
+echo -e "🌸 Starting Phish Spammer v3"
 echo "🌐 Base URL: $BASE_URL"
 echo "🔁 Targeting: ${TARGET_PATHS[*]}"
 echo "🧅 Routing through Tor SOCKS5 proxy"
